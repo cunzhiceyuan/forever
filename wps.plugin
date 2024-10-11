@@ -1,13 +1,18 @@
 #!name=WPS签到
 #!desc=登录账号后重进app抓包，仅测试suge和loon不支持qx
+#!icon=https://github.com/Toperlock/Quantumult/raw/main/icon/Naruto/Naruto-1029.png
 #!arguments=AK:null,SK:null,MAX_RETRIES:5,TIMEOUT:120,CRONEXP: 0 8 * * *
 #!arguments-desc=百度API\nAK - API Key\nSK - Secret Key\nMAX_RETRIES - 最大运行次数
 
+
+
+
+
+
 [Script]
-WPS_checkin = type=cron,cronexp={{{CRONEXP}}},wake-system=1,timeout={{{TIMEOUT}}},debug=1,script-path=https://raw.githubusercontent.com/cunzhiceyuan/Privateforever/refs/heads/main/WPS_checkin.js?token=GHSAT0AAAAAACVYBPXGRHTEX3VCNTQNNUF6ZYIT4MQ,argument="AK={{{AK}}}&SK={{{SK}}}&MAX_RETRIES={{{MAX_RETRIES}}}"
+cron "0 8 * * *" script-path=js, timeout=120, tag=WPS_checkin, argument="AK=null&SK=null&MAX_RETRIES=5"
 
-//WPS_Cookie = type=http-request,pattern=https://moapi.wps.cn/app/ios/v1/app,requires-body=1,max-size=0,binary-body-mode=0,script-path=https://raw.githubusercontent.com/cunzhiceyuan/Privateforever/refs/heads/main/WPS_checkin.js?token=GHSAT0AAAAAACVYBPXGRHTEX3VCNTQNNUF6ZYIT4MQ
-
+http-request https://moapi.wps.cn/app/ios/v1/app script-path=WPS_checkin.js, requires-body=true, tag=WPS_Cookie
 
 [MITM]
-//hostname = %APPEND% moapi.wps.cn
+hostname = moapi.wps.cn
