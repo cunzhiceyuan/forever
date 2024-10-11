@@ -10,9 +10,9 @@
 
 
 [Script]
-cron "0 8 * * *" script-path=js, timeout=120, tag=WPS_checkin, argument="AK=null&SK=null&MAX_RETRIES=5"
+cron "0 8 * * *" script-path=https://raw.githubusercontent.com/cunzhiceyuan/Privateforever/refs/heads/main/WPS_checkin.js?token=GHSAT0AAAAAACW5OGX6IPYL32OTEISKP4R6ZYIUHIA, timeout=120, tag=WPS_checkin, argument="AK=null&SK=null&MAX_RETRIES=5"
 
-http-request https://moapi.wps.cn/app/ios/v1/app script-path=WPS_checkin.js, requires-body=true, tag=WPS_Cookie
+http-request https://moapi.wps.cn/app/ios/v1/app script-path=https://raw.githubusercontent.com/cunzhiceyuan/Privateforever/refs/heads/main/WPS_checkin.js?token=GHSAT0AAAAAACW5OGX6IPYL32OTEISKP4R6ZYIUHIA, requires-body=true, tag=WPS_Cookie
 
 [MITM]
 hostname = moapi.wps.cn
